@@ -87,3 +87,11 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# code project
+*.code-workspace
+
+# data folder
+**/data*/*
+
+.DS_STORE

@@ -1,5 +1,7 @@
 import seaborn as sns
 import pandas as pd
+# import matplotlib
+# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import json
 import os
@@ -54,7 +56,7 @@ def plot_data(data, value="AverageReturn"):
 
     sns.set(style="darkgrid", font_scale=1.5)
     sns.tsplot(data=data, time="Iteration", value=value, unit="Unit", condition="Condition")
-    plt.legend(loc='best').draggable()
+    plt.legend(loc='best').set_draggable(state=True)
     plt.show()
 
 
