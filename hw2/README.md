@@ -65,3 +65,17 @@ Trying again with same learning rate, but with a batch size of 50k, it's a littl
 <p float="left">
   <img src="./results/ll_b50k_lr002.png" width="350"/>
 </p>
+
+After fixing a bug where the baseline scaling was incorrect, it was almost there with LR 0.003 and LR 0.005:
+<p float="left">
+  <img src="./results/ll_b40k_lr003.png" width="350"/>
+</p>
+<p float="left">
+  <img src="./results/ll_b40k_lr005_g9999.png" width="350"/>
+</p>
+
+Trying gamma = 0.99, finally is close to 180:
+<p float="left">
+  <img src="./results/ll_b40k_lr005_g99.png" width="350"/>
+</p>
+Seems like that bug was the final fix! Crazy that Half Cheetah and Inverted Pendulum, both continuous environments, did not have a problem with this bug, and also that the larger horizon actually prevented it from achieving a higher high score.
