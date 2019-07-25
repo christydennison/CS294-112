@@ -440,8 +440,8 @@ class Agent(object):
             # (mean and std) of the current batch of Q-values. (Goes with Hint
             # #bl2 in Agent.update_parameters.
             b_n_raw = self.sess.run(self.baseline_prediction, feed_dict={self.sy_ob_no: ob_no})
-            b_n_raw_scaled = b_n_raw * np.std(b_n_raw) + np.mean(b_n_raw)
-            b_n = b_n_raw_scaled * np.std(q_n) + np.mean(q_n)
+            b_n_raw_unit_scaled = (b_n_raw - np.mean(b_n_raw)) / (np.std(b_n_raw) + 1e-8)
+            b_n = b_n_raw_unit_scaled * np.std(q_n) + np.mean(q_n)
             adv_n = q_n - b_n
         else:
             adv_n = q_n.copy()
